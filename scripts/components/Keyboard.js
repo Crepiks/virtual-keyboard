@@ -13,6 +13,7 @@ class Keyboard {
         this.lang = localStorage.getItem('lang') || 'ru';
         this.ctrlIsPressed = false;
         this.altIsPressed = false;
+        this.isShiftPressed = false;
         this.isCapsLockActive = false;
         this.el = null;
         this.options = options;
@@ -29,7 +30,7 @@ class Keyboard {
                 });
             } else {
                 let label = item[this.lang];
-                if (label && this.isCapsLockActive) {
+                if (label && (this.isCapsLockActive || this.isShiftPressed)) {
                     label = label.toUpperCase();
                 }
                 return new Button(this.handleButtonClick, item.code, label, item.additionalClasses, {
@@ -115,11 +116,19 @@ class Keyboard {
         this.handleInput(e.code);
     }
 
+    toggleShiftState(code, flag) {
+        if ((code === 'ShiftLeft' || code === 'ShiftRight') && flag !== this.isShiftPressed) {
+            this.isShiftPressed = flag;
+            this.reloadKeyboard();
+        }
+    }
+
     activateButton = (code) => {
         let button = this.getButtonById(code);
         if (button) {
             button.activate();
         }
+        this.toggleShiftState(code, true);
     }
 
     deactivateButton = (code) => {
@@ -127,6 +136,7 @@ class Keyboard {
         if (button) {
             button.deactivate();
         }
+        this.toggleShiftState(code, false);
     }
 }
 
