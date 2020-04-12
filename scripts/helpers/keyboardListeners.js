@@ -1,15 +1,19 @@
 export const listenKeyboardButtonEvents = (languageChangeHandler, activateButtonHandler, deactivateButtonHandler, inputHandler) => {
+
+    let altIsPressed = false;
+    let ctrlIsPressed = false;
+
     document.addEventListener('keydown', e => {
         e.preventDefault();
         if (e.key === 'Control') {
-            window.ctrlIsPressed = true;
-            if (window.altIsPressed && window.ctrlIsPressed) {
+            ctrlIsPressed = true;
+            if (altIsPressed && ctrlIsPressed) {
                 languageChangeHandler();
             }
         }
         if (e.key === 'Alt') {
-            window.altIsPressed = true;
-            if (window.altIsPressed && window.ctrlIsPressed) {
+            altIsPressed = true;
+            if (altIsPressed && ctrlIsPressed) {
                 languageChangeHandler();
             }
         }
@@ -20,10 +24,10 @@ export const listenKeyboardButtonEvents = (languageChangeHandler, activateButton
     document.addEventListener('keyup', e => {
         e.preventDefault();
         if (e.key === 'Control') {
-            window.ctrlIsPressed = false;
+            ctrlIsPressed = false;
         }
         if (e.key === 'Alt') {
-            window.altIsPressed = false;
+            altIsPressed = false;
         }
         deactivateButtonHandler(e.code);
     });
