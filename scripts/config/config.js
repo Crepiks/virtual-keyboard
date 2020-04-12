@@ -2,67 +2,80 @@ export const keyboardArray = [
     {
         code: 'Backquote',
         ru: 'ё',
-        en: '`'
+        en: '`',
+        alt: '~'
     },
     {
         code: 'Digit1',
         ru: '1',
-        en: '1'
+        en: '1',
+        alt: '!'
     },
     {
         code: 'Digit2',
         ru: '2',
-        en: '2'
+        en: '2',
+        alt: '@'
     },
     {
         code: 'Digit3',
         ru: '3',
-        en: '3'
+        en: '3',
+        alt: '#'
     },
     {
         code: 'Digit4',
         ru: '4',
-        en: '4'
+        en: '4',
+        alt: '$'
     },
     {
         code: 'Digit5',
         ru: '5',
-        en: '5'
+        en: '5',
+        alt: '%'
     },
     {
         code: 'Digit6',
         ru: '6',
-        en: '6'
+        en: '6',
+        alt: '^'
     },
     {
         code: 'Digit7',
         ru: '7',
-        en: '7'
+        en: '7',
+        alt: '&'
     },
     {
         code: 'Digit8',
         ru: '8',
-        en: '8'
+        en: '8',
+        alt: '*'
     },
     {
         code: 'Digit9',
         ru: '9',
-        en: '9'
+        en: '9',
+        alt: '('
     },
     {
         code: 'Digit0',
         ru: '0',
-        en: '0'
+        en: '0',
+        alt: ')'
     },
     {
         code: 'Minus',
         ru: '-',
-        en: '-'
+        en: '-',
+        alt: '_'
     },
     {
         code: 'Equal',
         ru: '=',
-        en: '='
+        en: '=',
+        alt: '+'
     },
     {
         code: 'Backspace',

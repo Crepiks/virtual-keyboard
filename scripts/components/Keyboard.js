@@ -33,6 +33,9 @@ class Keyboard {
                 if (label && (this.isCapsLockActive || this.isShiftPressed)) {
                     label = label.toUpperCase();
                 }
+                if (this.isShiftPressed && item.alt) {
+                    label = item.alt;
+                }
                 return new Button(this.handleButtonClick, item.code, label, item.additionalClasses, {
                     isOperating: false,
                     content: item.content
