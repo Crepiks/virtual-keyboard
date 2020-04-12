@@ -25,17 +25,11 @@ class TextArea {
         this.el.focus();
     }
 
-    unmount() {
-        document.body.removeChild(this.el);
-    }
-
-    addText(text) {
-        this.el.value += text;
-    }
-
-    deleteLastChar() {
-        this.el.value = this.el.value.slice(0, this.el.value.length - 1);
-    }
+    unmount = () => document.body.removeChild(this.el);
+        
+    addText = (text) => this.el.value += text;
+        
+    deleteLastChar = () => this.el.value = this.el.value.slice(0, this.el.value.length - 1);
 }
 
 export default TextArea;

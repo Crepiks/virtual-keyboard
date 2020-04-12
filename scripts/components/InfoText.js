@@ -11,9 +11,7 @@ class InfoText {
         this.el = container;
     }
 
-    mount() {
-        document.body.appendChild(this.el);
-    }
+    mount = () => document.body.appendChild(this.el);
 }
 
 export default InfoText;

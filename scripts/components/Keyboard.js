@@ -55,15 +55,9 @@ class Keyboard {
         this.el = template;
     }
 
-    mount() {
-        if (this.el) {
-            document.body.appendChild(this.el);
-        }
-    }
+    mount = () => this.el && document.body.appendChild(this.el);
 
-    unmount() {
-        document.body.removeChild(this.el);
-    }
+    unmount = () => document.body.removeChild(this.el);
 
     reloadKeyboard() {
         this.unmount();
@@ -111,13 +105,9 @@ class Keyboard {
         }
     }
 
-    handleButtonClick = (e) => {
-        this.handleInput(e.target.id);
-    }
+    handleButtonClick = (e) => this.handleInput(e.target.id);
 
-    handlePhysicalKeyboardInput = (e) => {
-        this.handleInput(e.code);
-    }
+    handlePhysicalKeyboardInput = (e) => this.handleInput(e.code);
 
     toggleShiftState(code, flag) {
         if ((code === 'ShiftLeft' || code === 'ShiftRight') && flag !== this.isShiftPressed) {
