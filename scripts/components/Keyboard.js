@@ -22,24 +22,23 @@ class Keyboard {
 
   generateButtonsArray() {
     this.buttons = this.keyboardArray.map((item) => {
+      let options = {
+        isOperating: item.isOperating || false,
+        content: item.content,
+      };
+      let label;
       if (item.isOperating) {
-        return new Button(this.handleButtonClick, item.code, item.label, item.additionalClasses, {
-          isOperating: true,
-          content: item.content,
-        });
+        label = item.label;
       } else {
-        let label = item[this.lang];
+        label = item[this.lang];
         if (label && (this.isCapsLockActive || this.isShiftPressed)) {
           label = label.toUpperCase();
         }
         if (this.isShiftPressed && item.alt) {
           label = item.alt;
         }
-        return new Button(this.handleButtonClick, item.code, label, item.additionalClasses, {
-          isOperating: false,
-          content: item.content,
-        });
       }
+      return new Button(this.handleButtonClick, item.code, label, item.additionalClasses, options);
     });
   }
 
