@@ -61,13 +61,18 @@ class TextArea {
     this.el.value += text;
   };
 
-  backspace = () => {
+  deleteText = (buttonType) => {
     let text = this.el.value;
     const caretPosition = this.getCaretPosition(this.el);
     let newCaretPosition;
     if (caretPosition.start === caretPosition.end) {
-      text = text.substring(0, caretPosition.start - 1) + text.substring(caretPosition.end);
-      newCaretPosition = caretPosition.start - 1;
+      if (buttonType === 'Backspace') {
+        text = text.substring(0, caretPosition.start - 1) + text.substring(caretPosition.end);
+        newCaretPosition = caretPosition.start - 1;
+      } else if (buttonType === 'Delete') {
+        text = text.substring(0, caretPosition.start) + text.substring(caretPosition.end + 1);
+        newCaretPosition = caretPosition.start;
+      }
     } else {
       text = text.substring(0, caretPosition.start) + text.substring(caretPosition.end);
       newCaretPosition = caretPosition.start;

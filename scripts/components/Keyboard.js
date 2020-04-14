@@ -91,8 +91,9 @@ class Keyboard {
       return;
     }
     const textArea = new TextArea();
-    if (id === 'Backspace') {
-      textArea.backspace();
+    console.log(id);
+    if (id === 'Backspace' || id === 'Delete') {
+      textArea.deleteText(id);
       return;
     }
     if (id === 'CapsLock') {
