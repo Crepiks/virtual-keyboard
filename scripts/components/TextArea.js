@@ -20,6 +20,36 @@ class TextArea {
     return element;
   }
 
+  getCaretPosition = (el) => {
+    if (el.selectionStart || el.selectionStart === 0) {
+      return {
+        start: el.selectionStart,
+        end: el.selectionEnd,
+      };
+    }
+    return {
+      start: 0,
+      end: 0,
+    };
+  };
+
+  setCaretPosition = (el, position) => {
+    if (el.createTextRange) {
+      const range = el.createTextRange();
+      range.move('character', position);
+      range.select();
+    } else if (el.selectionStart) {
+      el.focus();
+      el.setSelectionRange(position, position);
+    } else {
+      el.focus();
+    }
+  };
+
+  reloadContent(content) {
+    this.el.value = content;
+  }
+
   mount() {
     document.body.appendChild(this.el);
     this.el.focus();
@@ -31,8 +61,19 @@ class TextArea {
     this.el.value += text;
   };
 
-  deleteLastChar = () => {
-    this.el.value = this.el.value.slice(0, this.el.value.length - 1);
+  backspace = () => {
+    let text = this.el.value;
+    const caretPosition = this.getCaretPosition(this.el);
+    let newCaretPosition;
+    if (caretPosition.start === caretPosition.end) {
+      text = text.substring(0, caretPosition.start - 1) + text.substring(caretPosition.end);
+      newCaretPosition = caretPosition.start - 1;
+    } else {
+      text = text.substring(0, caretPosition.start) + text.substring(caretPosition.end);
+      newCaretPosition = caretPosition.start;
+    }
+    this.reloadContent(text);
+    this.setCaretPosition(this.el, newCaretPosition);
   };
 }
 

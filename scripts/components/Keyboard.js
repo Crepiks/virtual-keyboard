@@ -92,7 +92,7 @@ class Keyboard {
     }
     const textArea = new TextArea();
     if (id === 'Backspace') {
-      textArea.deleteLastChar();
+      textArea.backspace();
       return;
     }
     if (id === 'CapsLock') {
