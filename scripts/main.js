@@ -1,7 +1,7 @@
 import TextArea from './components/TextArea.js';
 import Keyboard from './components/Keyboard.js';
 import InfoText from './components/InfoText.js';
-import { listenKeyboardButtonEvents } from './helpers/keyboardListeners.js';
+import listenKeyboardButtonEvents from './helpers/keyboardListeners.js';
 import keyboardArray from './config/keyboardArray.js';
 
 window.onload = function () {

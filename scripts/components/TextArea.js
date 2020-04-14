@@ -10,7 +10,7 @@ class TextArea {
   }
 
   static getTemplate(id, className) {
-    let element = document.createElement('textarea');
+    const element = document.createElement('textarea');
     if (id) {
       element.id = id;
     }
@@ -27,9 +27,13 @@ class TextArea {
 
   unmount = () => document.body.removeChild(this.el);
 
-  addText = (text) => (this.el.value += text);
+  addText = (text) => {
+    this.el.value += text;
+  };
 
-  deleteLastChar = () => (this.el.value = this.el.value.slice(0, this.el.value.length - 1));
+  deleteLastChar = () => {
+    this.el.value = this.el.value.slice(0, this.el.value.length - 1);
+  };
 }
 
 export default TextArea;

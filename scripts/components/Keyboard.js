@@ -18,12 +18,13 @@ class Keyboard {
     this.options = options;
     this.keyboardArray = keyboardArray;
     this.buttons = null;
+    instance = this;
   }
 
   generateButtonsArray() {
     this.buttons = this.keyboardArray.map((item) => {
       let label;
-      let options = {
+      const options = {
         isOperating: item.isOperating || false,
       };
       if (item.label) {
@@ -85,11 +86,11 @@ class Keyboard {
   };
 
   handleInput = (id) => {
-    let button = this.getButtonById(id);
+    const button = this.getButtonById(id);
     if (!button) {
       return;
     }
-    let textArea = new TextArea();
+    const textArea = new TextArea();
     if (id === 'Backspace') {
       textArea.deleteLastChar();
       return;
@@ -116,7 +117,7 @@ class Keyboard {
   }
 
   activateButton = (code) => {
-    let button = this.getButtonById(code);
+    const button = this.getButtonById(code);
     if (button) {
       button.activate();
     }
@@ -124,7 +125,7 @@ class Keyboard {
   };
 
   deactivateButton = (code) => {
-    let button = this.getButtonById(code);
+    const button = this.getButtonById(code);
     if (button) {
       button.deactivate();
     }

@@ -1,4 +1,4 @@
-export const listenKeyboardButtonEvents = (
+export default (
   languageChangeHandler,
   activateButtonHandler,
   deactivateButtonHandler,
