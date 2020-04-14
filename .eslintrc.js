@@ -3,10 +3,9 @@ module.exports = {
   env: {
     browser: true,
   },
-  extends: ['airbnb', 'prettier'],
+  extends: ['airbnb-base/legacy', 'prettier'],
   plugins: ['prettier'],
   rules: {
     'prettier/prettier': ['error'],
-    'import/extensions': ['error', 'ignorePackages', { js: 'never', jsx: 'never' }],
   },
 };

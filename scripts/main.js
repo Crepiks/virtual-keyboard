@@ -4,7 +4,7 @@ import InfoText from './components/InfoText.js';
 import listenKeyboardButtonEvents from './helpers/keyboardListeners.js';
 import keyboardArray from './config/keyboardArray.js';
 
-window.onload = function () {
+window.onload = () => {
   const infoText = new InfoText([
     'Разработано на Windows',
     'Сочетание клавиш для переключение языка - Ctrl + Alt',
