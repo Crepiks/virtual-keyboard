@@ -22,21 +22,25 @@ class Keyboard {
 
   generateButtonsArray() {
     this.buttons = this.keyboardArray.map((item) => {
+      let label;
       let options = {
         isOperating: item.isOperating || false,
-        content: item.content,
       };
-      let label;
-      if (item.isOperating) {
+      if (item.label) {
         label = item.label;
+        if (!item.isOperating) {
+          options.content = item[this.lang].text;
+        }
       } else {
-        label = item[this.lang];
-        if (label && (this.isCapsLockActive || this.isShiftPressed)) {
-          label = label.toUpperCase();
+        label = item[this.lang].text;
+        if (this.isCapsLockActive) {
+          label = item[this.lang].text.toUpperCase();
         }
-        if (this.isShiftPressed && item.alt) {
-          label = item.alt;
+
+        if (this.isShiftPressed) {
+          label = item[this.lang].alt || item[this.lang].text.toUpperCase();
         }
+        options.content = label;
       }
       return new Button(this.handleButtonClick, item.code, label, item.additionalClasses, options);
     });
@@ -66,7 +70,6 @@ class Keyboard {
 
   toggleLang = () => {
     this.lang = this.lang === 'ru' ? 'en' : 'ru';
-    console.log('Language has been changed');
     localStorage.setItem('lang', this.lang);
     this.reloadKeyboard();
   };
@@ -98,8 +101,6 @@ class Keyboard {
     }
     if (button.content) {
       textArea.addText(button.content);
-    } else if (!button.isOperating && button.label) {
-      textArea.addText(button.label);
     }
   };
 

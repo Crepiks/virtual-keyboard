@@ -13,9 +13,9 @@ function getButtonTemplate(id = '', label = '', classNames = []) {
 class Button {
   constructor(clickHandler, id, label, classNames, options = {}) {
     this.id = id;
-    this.isOperating = options.isOperating || false;
     this.label = label;
     this.content = options.content;
+    this.isOperating = options.isOperating;
     this.el = getButtonTemplate(id, label, classNames);
     this.el.addEventListener('click', clickHandler);
   }
