@@ -1,0 +1,28 @@
+{
+  "name": "virtual-keyboard",
+  "version": "1.0.0",
+  "description": "Virtual keyboard",
+  "main": "index.js",
+  "scripts": {
+    "lint": "npx eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Crepiks/virtual-keyboard.git"
+  },
+  "author": "Sayazhan Onglassyn aka Crepiks",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Crepiks/virtual-keyboard/issues"
+  },
+  "homepage": "https://github.com/Crepiks/virtual-keyboard#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^2.0.4"
+  }
+}
